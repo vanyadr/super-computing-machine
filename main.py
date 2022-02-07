@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from main_ui import Ui_MainWindow
 
+import script
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -15,6 +17,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_down.clicked.connect(self._down)  # 3 задание
         self.button_up.clicked.connect(self.up)  # 2 задание
         self.button_down.clicked.connect(self.down)  # 2 задание
+        self.search_btn.clicked.connect(self.search)
+
+    def search(self):
+        a = self.search_lineEdit.text()
+        ll, spn = script.get_ll_span(a)
+        ll_spn = f"ll={ll}&spn={spn[0]},{spn[1]}"
+        script.create_map(ll_spn, "map", add_params=f"pt={ll}")
+        self.map.setText()
+
+    def left(self):
+        pass
+
+    def right(self):
+        pass
+
+    def _up(self):
+        pass
+
+    def _down(self):
+        pass
+
+    def down(self):
+        pass
+
+    def up(self):
+        pass
 
 
 if __name__ == '__main__':
