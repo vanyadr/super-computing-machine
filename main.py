@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtGui import QPixmap
 from main_ui import Ui_MainWindow
 
 import script
@@ -23,7 +24,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ll, spn = script.get_ll_span(a)
         ll_spn = f"ll={ll}&spn={spn[0]},{spn[1]}"
         script.create_map(ll_spn, "map", add_params=f"pt={ll}")
-        self.map.setText()
+        pixmap = QPixmap('map.png')
+        self.map.setPixmap(pixmap)
 
     def left(self):
         pass
