@@ -1,4 +1,3 @@
-
 import sys
 import os
 import requests
@@ -66,4 +65,3 @@ def create_map(ll_spn=None, map_type="map", add_params=None):
     except IOError as ex:
         print("Ошибка записи временного файла:", ex)
         sys.exit(2)
-

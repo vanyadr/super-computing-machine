@@ -18,6 +18,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.button_up.clicked.connect(self.up)  # 2 задание
         self.button_down.clicked.connect(self.down)  # 2 задание
         self.search_btn.clicked.connect(self.search)
+        self.lst = ['схема', 'спутник', 'гибрид']
+        self.comboBox.addItems(self.lst)
+        self.comboBox.activated[str].connect(self.combo_checker)
+
+    def combo_checker(self):
+        curr = self.comboBox.currentText()
+        d = {'схема': 'map', 'спутник': 'sat', 'гибрид': 'sat, skl'}
+        a = self.search_lineEdit.text()
+        ll, spn = script.get_ll_span(a)
+        ll_spn = f"ll={ll}&spn={spn[0]},{spn[1]}"
+        script.create_map(ll_spn, d[curr], add_params=f"pt={ll}")
 
     def search(self):
         a = self.search_lineEdit.text()
