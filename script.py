@@ -67,10 +67,3 @@ def create_map(ll_spn=None, map_type="map", add_params=None):
         print("Ошибка записи временного файла:", ex)
         sys.exit(2)
 
-
-toponym_to_find = input()
-
-
-ll, spn = get_ll_span(toponym_to_find)
-ll_spn = f"ll={ll}&spn={spn[0]},{spn[1]}"
-create_map(ll_spn, "map", add_params=f"pt={ll}")
